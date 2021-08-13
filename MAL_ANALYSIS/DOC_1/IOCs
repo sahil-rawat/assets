@@ -1,0 +1,15 @@
+HTTP REQUESTS: 
+    http://www.acrobatverify.com/
+
+IP TRAFFIC: 
+    204.11.56.48:443
+
+DNS RESOLUTION: 
+    www.acrobatverify.com
+    www.*.acrobatverify.com
+    mail.*.acrobatverify.com
+    *.acrobatverify.com
+
+FILES CREATED:
+    C:\Users\REMWin7\AppData\Roaming\AdobeAcrobatLicenseVerify.vbs
+    C:\Users\REMWin7\AppData\Roaming\AdobeAcrobatLicenseVerify.ps1
