@@ -1,0 +1,25 @@
+HTTP REQUESTS: 
+    http://t.zz3r0.com/
+    http://t.zker9.com/
+    http://t.bb3u9.com/
+
+DNS RESOLUTION: 
+    t.zz3r0.com
+    t.zker9.com
+    t.bb3u9.com
+    t.*.com
+
+SCHEDULES CREATED:
+    schtasks /create /ru system /sc MINUTE /mo 60 /tn "<random_name>" /F /tr "powershell -c PS_CMD"
+    schtasks /create /sc MINUTE /mo 60 /tn "<random_name>" /F /tr "powershell -w hidden -c PS_CMD"
+    schtasks /create /sc MINUTE /mo 120 /tn blackball /F /tr "blackball"
+    schtasks /create /ru system /sc MINUTE /mo 120 /tn blackball /F /tr "blackball"
+
+EVENTS CREATED:
+    NAME blackball
+
+FIREWALL RULES CREATED:
+    netsh.exe interface portproxy add v4tov4 listenport=65529 connectaddress=1.1.1.1 connectport=53
+    netsh.exe firewall add portopening tcp 65529 SDNSd
+    netsh advfirewall firewall add rule name="deny135" dir=in protocol=tcp localport=135 action=block
+    netsh advfirewall firewall add rule name="deny445" dir=in protocol=tcp localport=445 action=block
