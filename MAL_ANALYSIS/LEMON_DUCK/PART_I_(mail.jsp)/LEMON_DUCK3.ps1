@@ -25,7 +25,7 @@ function getRan(){
 }
 
 # Array containing Domains, maybe C&C(Command and Control) server domains. 
-$us=@('t.zz3r0.com','t.zker9.com','t.bb3u9.com')
+$us=@('t[.]zz3r0[.]com','t[.]zker9[.]com','t[.]bb3u9[.]com')
 
 # Creates Schedule Service object, Which could be used to view Scheduled tasks
 $stsrv = New-Object -ComObject Schedule.Service

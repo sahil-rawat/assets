@@ -1,13 +1,13 @@
 HTTP REQUESTS: 
-    http://t.zz3r0.com/
-    http://t.zker9.com/
-    http://t.bb3u9.com/
+    hxxp[://]t[.]zz3r0[.]com/
+    hxxp[://]t[.]zker9[.]com/
+    hxxp[://]t[.]bb3u9[.]com/
 
 DNS RESOLUTION: 
-    t.zz3r0.com
-    t.zker9.com
-    t.bb3u9.com
-    t.*.com
+    t[.]zz3r0[.]com
+    t[.]zker9[.]com
+    t[.]bb3u9[.]com
+    t[.]*[.]com
 
 SCHEDULES CREATED:
     schtasks /create /ru system /sc MINUTE /mo 60 /tn "<random_name>" /F /tr "powershell -c PS_CMD"
